@@ -1,4 +1,5 @@
 import os
+import random
 import threading
 import time
 import wave
@@ -7,37 +8,36 @@ import pyaudio
 import pymorphy2
 
 
-def zagruzk():
-    for x in range(30):
-        print('\033[37m {}' .format(f"Загрузка{'.'*(x+1)}"))
-        time.sleep(0.3)
+def simulated_load():
+    a = ['!','1','@','2','"','№',';','%',':','?','*','(',')','_','-','+','=','#','$','%','^','&','q','Q','w','W','e','E','r','R','t','T','y','Y','u','U','i','I','o','O','p','P','[',']','{','}','a','A','s','S','d','D','f','F','g','G','h','G','h','H','j','J','k','K','l','L',"'",'|','z','Z','x','X','c','C','v','V','b','B','n','N','m','M','<','>',',','.','й','Й','ц','Ц','у','У','к','К','е','Е','н','Н','г','Г','ш','Ш','щ','Щ','з','З','х','Х','ъ','Ъ','ф','Ф','ы','Ы','в','В','а','А','п','П','р','Р','о','О','л','Л','д','Д','ж','Ж','э','Э','я','Я','ч','Ч','с','С','м','М','и','И','т','Т','ь','Ь','б','Б','ю','Ю']
+    for x in range(60):
+        da1 = [a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)],a[random.randint(0,149)]]
+        print(''.join(da1))
+        time.sleep(0.1)
         os.system('cls')
-    print('\033[37m {}' .format('\rЗагрузка',end='..............................100%\n'))
     print('\033[31m {}' .format('Получившийся текст:\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------'))
 
-zagruzka = threading.Thread(target = zagruzk)
+simulated_loading = threading.Thread(target = simulated_load)
 
-def zvuk_zagruzki():
+def sound_simulated_load():
     CHUNK = 1024
-    sound_loading = wave.open("zvuk-dial-up-modema-i-oshibki-windows-30516.wav", 'rb')
-    p = pyaudio.PyAudio()
-    stream_loading = p.open(format=p.get_format_from_width(sound_loading.getsampwidth()),
-                    channels = sound_loading.getnchannels(),
-                    rate = sound_loading.getframerate(),
+    file_sound_simulated_loading = wave.open("error.wav", 'rb')
+    stream_simulated_loading = pyaudio.PyAudio().open(format = pyaudio.PyAudio().get_format_from_width(file_sound_simulated_loading.getsampwidth()),
+                    channels = file_sound_simulated_loading.getnchannels(),
+                    rate = file_sound_simulated_loading.getframerate(),
                     output = True)
-    data = sound_loading.readframes(CHUNK)
+    data = file_sound_simulated_loading.readframes(CHUNK)
     while data != '':
-        stream_loading.write(data)
-        data = sound_loading.readframes(CHUNK)
+        stream_simulated_loading.write(data)
+        data = file_sound_simulated_loading.readframes(CHUNK)
 
-zvuk_zagruzka = threading.Thread(target = zvuk_zagruzki)
+sound_simulated_loading = threading.Thread(target = sound_simulated_load)
 
 
-def zvuk():
+def sound_keyboard():
     CHUNK = 1024
     sound_keyboard = wave.open("Klaviatura.wav", 'rb')
-    p = pyaudio.PyAudio()
-    stream_keyboard = p.open(format = p.get_format_from_width(sound_keyboard.getsampwidth()),
+    stream_keyboard = pyaudio.PyAudio().open(format = pyaudio.PyAudio().get_format_from_width(sound_keyboard.getsampwidth()),
                     channels = sound_keyboard.getnchannels(),
                     rate = sound_keyboard.getframerate(),
                     output = True)
@@ -46,63 +46,141 @@ def zvuk():
         stream_keyboard.write(data)
         data = sound_keyboard.readframes(CHUNK)
 
-sound_keyboard_before_processing_sentence_1 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_2 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_3 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_4 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_5 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_6 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_7 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_8 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_9 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_10 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_11 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_12 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_13 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_14 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_15 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_16 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_17 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_18 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_19 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_20 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_21 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_22 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_23 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_24 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_25 = threading.Thread(target = zvuk)
-sound_keyboard_before_processing_sentence_26 = threading.Thread(target = zvuk)
+sound_keyboard_before_processing_sentence_1 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_2 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_3 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_4 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_5 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_6 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_7 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_8 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_9 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_10 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_11 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_12 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_13 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_14 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_15 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_16 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_17 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_18 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_19 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_20 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_21 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_22 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_23 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_24 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_25 = threading.Thread(target = sound_keyboard)
+sound_keyboard_before_processing_sentence_26 = threading.Thread(target = sound_keyboard)
 
-sound_keyboard_after_processing_sentence_1 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_2 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_3 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_4 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_5 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_6 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_7 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_8 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_9 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_10 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_11 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_12 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_13 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_14 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_15 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_16 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_17 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_18 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_19 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_20 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_21 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_22 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_23 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_24 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_25 = threading.Thread(target = zvuk)
-sound_keyboard_after_processing_sentence_26 = threading.Thread(target = zvuk)
+sound_keyboard_after_processing_sentence_1 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_2 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_3 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_4 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_5 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_6 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_7 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_8 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_9 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_10 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_11 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_12 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_13 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_14 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_15 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_16 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_17 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_18 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_19 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_20 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_21 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_22 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_23 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_24 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_25 = threading.Thread(target = sound_keyboard)
+sound_keyboard_after_processing_sentence_26 = threading.Thread(target = sound_keyboard)
+
+
+
+class declension_of_the_text:
+    def __init__(self, bloxaIm, orelIm, hareIm):
+        global bloxaPad, bloxaRod, bloxaPred, bloxaVin
+        global orelDat, orelPad, orelRod 
+        global hareDat, harePad, hareRod, hareVin
+        self.bloxaIm = bloxaIm
+        self.orelIm = orelIm
+        self.hareIm = hareIm
+
+        morph = pymorphy2.MorphAnalyzer()
+            
+        gent = morph.parse(bloxaIm)[0].inflect({'gent'})
+        bloxaRod = str(gent.word)
+            
+        accs = morph.parse(bloxaIm)[0].inflect({'accs'})
+        bloxaVin = str(accs.word)
+            
+        loct = morph.parse(bloxaIm)[0].inflect({'loct'})
+        bloxaPred = str(loct.word)
+
+        if morph.parse(bloxaIm)[0].tag.gender == 'masc':
+            bloxaPad = 1
+
+        elif morph.parse(bloxaIm)[0].tag.gender == 'femn':
+            bloxaPad = 2
+
+        elif morph.parse(bloxaIm)[0].tag.gender == 'neut':
+            bloxaPad = 3
+    
+        gent = morph.parse(orelIm)[0].inflect({'gent'})
+        orelRod = str(gent.word)
+            
+        datv = morph.parse(orelIm)[0].inflect({'datv'})
+        orelDat = str(datv.word)
+
+        if morph.parse(orelIm)[0].tag.gender == 'masc':
+            orelPad = 1
+
+        elif morph.parse(orelIm)[0].tag.gender == 'femn':
+            orelPad = 2
+
+        elif morph.parse(orelIm)[0].tag.gender == 'neut':
+            orelPad = 3
+
+        gent = morph.parse(hareIm)[0].inflect({'gent'})
+        hareRod = str(gent.word)
+            
+        datv = morph.parse(hareIm)[0].inflect({'datv'})
+        hareDat = str(datv.word)
+
+        accs = morph.parse(hareIm)[0].inflect({'accs'})
+        hareVin = str(accs.word)
+
+        if morph.parse(hareIm)[0].tag.gender == 'masc':
+            harePad = 1
+
+        elif morph.parse(hareIm)[0].tag.gender == 'femn':
+            harePad = 2
+
+        elif morph.parse(hareIm)[0].tag.gender == 'neut':
+            harePad = 3
+
+        
+             
+        self.bloxaRod = bloxaRod
+        self.bloxaVin = bloxaVin
+        self.bloxaPred = bloxaPred
+        self.bloxaPad = bloxaPad
+        self.orelRod = orelRod
+        self.orelDat = orelDat
+        self.orelPad = orelPad
+        self.hareRod = hareRod
+        self.hareDat = hareDat
+        self.harePad = harePad
+        self.hareVin = hareVin
 
 select_or_enter = int(input('1 == выбрать данные, 2 == ввести данные '))
 
-resulting_sentence = 1
+resulting_sentence = ''
 
 if select_or_enter == 1:
     print('1) Блоха, Орёл, Заяц')
@@ -112,293 +190,42 @@ if select_or_enter == 1:
     
     if what_text == 1:
        
-        morph = pymorphy2.MorphAnalyzer()
-
         bloxaIm = 'блоха'
-            
-        gent = morph.parse(bloxaIm)[0].inflect({'gent'})
-        bloxaRod = str(gent.word)
-            
-        accs = morph.parse(bloxaIm)[0].inflect({'accs'})
-        bloxaVin = str(accs.word)
-            
-        loct = morph.parse(bloxaIm)[0].inflect({'loct'})
-        bloxaPred = str(loct.word)
-
-        if morph.parse(bloxaIm)[0].tag.gender == 'masc':
-            bloxaPad = 1
-
-        elif morph.parse(bloxaIm)[0].tag.gender == 'femn':
-            bloxaPad = 2
-
-        elif morph.parse(bloxaIm)[0].tag.gender == 'neut':
-            bloxaPad = 3
-        
-        orelIm = 'орёл'
-    
-        gent = morph.parse(orelIm)[0].inflect({'gent'})
-        orelRod = str(gent.word)
-            
-        datv = morph.parse(orelIm)[0].inflect({'datv'})
-        orelDat = str(datv.word)
-
-        if morph.parse(orelIm)[0].tag.gender == 'masc':
-            orelPad = 1
-
-        elif morph.parse(orelIm)[0].tag.gender == 'femn':
-            orelPad = 2
-
-        elif morph.parse(orelIm)[0].tag.gender == 'neut':
-            orelPad = 3
-        
+        orelIm = 'орел'
         hareIm = 'заяц'
-
-        gent = morph.parse(hareIm)[0].inflect({'gent'})
-        hareRod = str(gent.word)
-            
-        datv = morph.parse(hareIm)[0].inflect({'datv'})
-        hareDat = str(datv.word)
-
-        accs = morph.parse(hareIm)[0].inflect({'accs'})
-        hareVin = str(accs.word)
-
-        if morph.parse(hareIm)[0].tag.gender == 'masc':
-            harePad = 1
-
-        elif morph.parse(hareIm)[0].tag.gender == 'femn':
-            harePad = 2
-
-        elif morph.parse(hareIm)[0].tag.gender == 'neut':
-            harePad = 3
+        text = declension_of_the_text(bloxaIm, orelIm, hareIm)
+        print(text.bloxaIm, text.orelIm, text.hareIm)
+        print(text.bloxaRod, text.bloxaVin, text.bloxaPred)
+        print(text.orelRod, text.orelDat)
+        print(text.hareRod, text.hareDat, text.hareVin)
 
     elif what_text == 2:
-        
-        morph = pymorphy2.MorphAnalyzer()
 
-        bloxaIm = 'игорь'
-            
-        gent = morph.parse(bloxaIm)[0].inflect({'gent'})
-        bloxaRod = str(gent.word)
-            
-        accs = morph.parse(bloxaIm)[0].inflect({'accs'})
-        bloxaVin = str(accs.word)
-            
-        loct = morph.parse(bloxaIm)[0].inflect({'loct'})
-        bloxaPred = str(loct.word)
-
-        if morph.parse(bloxaIm)[0].tag.gender == 'masc':
-            bloxaPad = 1
-
-        elif morph.parse(bloxaIm)[0].tag.gender == 'femn':
-            bloxaPad = 2
-
-        elif morph.parse(bloxaIm)[0].tag.gender == 'neut':
-            bloxaPad = 3
-        
-        orelIm = 'андрей'
-    
-        gent = morph.parse(orelIm)[0].inflect({'gent'})
-        orelRod = str(gent.word)
-            
-        datv = morph.parse(orelIm)[0].inflect({'datv'})
-        orelDat = str(datv.word)
-
-        if morph.parse(orelIm)[0].tag.gender == 'masc':
-            orelPad = 1
-
-        elif morph.parse(orelIm)[0].tag.gender == 'femn':
-            orelPad = 2
-
-        elif morph.parse(orelIm)[0].tag.gender == 'neut':
-            orelPad = 3
-        
-        hareIm = 'кирилл'
-
-        gent = morph.parse(hareIm)[0].inflect({'gent'})
-        hareRod = str(gent.word)
-            
-        datv = morph.parse(hareIm)[0].inflect({'datv'})
-        hareDat = str(datv.word)
-
-        accs = morph.parse(hareIm)[0].inflect({'accs'})
-        hareVin = str(accs.word)
-
-        if morph.parse(hareIm)[0].tag.gender == 'masc':
-            harePad = 1
-
-        elif morph.parse(hareIm)[0].tag.gender == 'femn':
-            harePad = 2
-
-        elif morph.parse(hareIm)[0].tag.gender == 'neut':
-            harePad = 3
+        text = declension_of_the_text('игорь','андрей','кирилл')
+        print(text.bloxaIm, text.orelIm, text.hareIm)
+        print(text.bloxaRod, text.bloxaVin, text.bloxaPred)
+        print(text.orelRod, text.orelDat)
+        print(text.hareRod, text.hareDat, text.hareVin)
 
     elif what_text == 3:
         
-        morph = pymorphy2.MorphAnalyzer()
-
-        bloxaIm = 'ангелина'
-            
-        gent = morph.parse(bloxaIm)[0].inflect({'gent'})
-        bloxaRod = str(gent.word)
-            
-        accs = morph.parse(bloxaIm)[0].inflect({'accs'})
-        bloxaVin = str(accs.word)
-            
-        loct = morph.parse(bloxaIm)[0].inflect({'loct'})
-        bloxaPred = str(loct.word)
-
-        if morph.parse(bloxaIm)[0].tag.gender == 'masc':
-            bloxaPad = 1
-
-        elif morph.parse(bloxaIm)[0].tag.gender == 'femn':
-            bloxaPad = 2
-
-        elif morph.parse(bloxaIm)[0].tag.gender == 'neut':
-            bloxaPad = 3
+        text = declension_of_the_text('ангелина','арсений','данил')
+        print(text.bloxaIm, text.orelIm, text.hareIm)
+        print(text.bloxaRod, text.bloxaVin, text.bloxaPred)
+        print(text.orelRod, text.orelDat)
+        print(text.hareRod, text.hareDat, text.hareVin)
         
-        orelIm = 'арсений'
-    
-        gent = morph.parse(orelIm)[0].inflect({'gent'})
-        orelRod = str(gent.word)
-            
-        datv = morph.parse(orelIm)[0].inflect({'datv'})
-        orelDat = str(datv.word)
-
-        if morph.parse(orelIm)[0].tag.gender == 'masc':
-            orelPad = 1
-
-        elif morph.parse(orelIm)[0].tag.gender == 'femn':
-            orelPad = 2
-
-        elif morph.parse(orelIm)[0].tag.gender == 'neut':
-            orelPad = 3
-        
-        hareIm = 'данил'
-
-        gent = morph.parse(hareIm)[0].inflect({'gent'})
-        hareRod = str(gent.word)
-            
-        datv = morph.parse(hareIm)[0].inflect({'datv'})
-        hareDat = str(datv.word)
-
-        accs = morph.parse(hareIm)[0].inflect({'accs'})
-        hareVin = str(accs.word)
-
-        if morph.parse(hareIm)[0].tag.gender == 'masc':
-            harePad = 1
-
-        elif morph.parse(hareIm)[0].tag.gender == 'femn':
-            harePad = 2
-
-        elif morph.parse(hareIm)[0].tag.gender == 'neut':
-            harePad = 3
 
 elif select_or_enter == 2:
-    
-    morph = pymorphy2.MorphAnalyzer()
 
     bloxaIm = str(input('Введите какой - нибудь предмет в именительном падеже '))
 
-    if morph.parse(bloxaIm)[0].tag.gender == 'masc':
-        bloxaPad = 1
-
-    elif morph.parse(bloxaIm)[0].tag.gender == 'femn':
-        bloxaPad = 2
-
-    elif morph.parse(bloxaIm)[0].tag.gender == 'neut':
-        bloxaPad = 3
-
-    morph = pymorphy2.MorphAnalyzer()
-    
-    if morph.parse(bloxaIm)[0].tag.animacy == 'inan':
-            
-        gent = morph.parse(bloxaIm)[0].inflect({'gent'})
-        bloxaRod = gent.word()
-            
-        accs = morph.parse(bloxaIm)[0].inflect({'accs'})
-        bloxaVin = accs.word()
-            
-        loct = morph.parse(bloxaIm)[0].inflect({'loct'})
-        bloxaPred = loct.word()
-            
-    elif morph.parse(bloxaIm)[0].tag.animacy == 'anim':
-        
-        bloxaIm = bloxaIm.title()
-
-        gent = morph.parse(bloxaIm)[0].inflect({'gent'})
-        bloxaRod = gent.word.title()
-            
-        accs = morph.parse(bloxaIm)[0].inflect({'accs'})
-        bloxaVin = accs.word.title()
-            
-        loct = morph.parse(bloxaIm)[0].inflect({'loct'})
-        bloxaPred = loct.word.title()
-
     orelIm = str(input('Введите другой предмет в именительном падеже '))
-
-    if morph.parse(orelIm)[0].tag.gender == 'masc':
-        orelPad = 1
-
-    elif morph.parse(orelIm)[0].tag.gender == 'femn':
-        orelPad = 2
-
-    elif morph.parse(orelIm)[0].tag.gender == 'neut':
-        orelPad = 3
-    
-    if morph.parse(orelIm)[0].tag.animacy == 'inan':
-
-        gent = morph.parse(orelIm)[0].inflect({'gent'})
-        orelRod = gent.word()
-            
-        datv = morph.parse(orelIm)[0].inflect({'datv'})
-        orelDat = datv.word()
-
-    elif morph.parse(orelIm)[0].tag.animacy == 'anim':
-            
-        orelIm = orelIm.title()    
-    
-        gent = morph.parse(orelIm)[0].inflect({'gent'})
-        orelRod = gent.word.title()
-            
-        datv = morph.parse(orelIm)[0].inflect({'datv'})
-        orelDat = datv.word.title()
     
     hareIm = str(input('Введите третий предмет в именительном падеже '))
 
-    if morph.parse(hareIm)[0].tag.gender == 'masc':
-        harePad = 1
-
-    elif morph.parse(hareIm)[0].tag.gender == 'femn':
-        harePad = 2
-
-    elif morph.parse(hareIm)[0].tag.gender == 'neut':
-        harePad = 3
-
-    rabotai = morph.parse(hareIm)[0]
+    text = declension_of_the_text(bloxaIm, orelIm, hareIm)
     
-    if morph.parse(hareIm)[0].tag.animacy == 'inan':
-
-        gent = morph.parse(hareIm)[0].inflect({'gent'})
-        hareRod = gent.word()
-            
-        datv = morph.parse(hareIm)[0].inflect({'datv'})
-        hareDat = datv.word()
-
-        accs = morph.parse(hareIm)[0].inflect({'accs'})
-        hareVin = accs.word()
-        
-    elif morph.parse(hareIm)[0].tag.animacy == 'anim':
-
-        hareIm = hareIm.title()
-
-        gent = morph.parse(hareIm)[0].inflect({'gent'})
-        hareRod = gent.word.title()
-            
-        datv = morph.parse(hareIm)[0].inflect({'datv'})
-        hareDat = datv.word.title()
-
-        accs = morph.parse(hareIm)[0].inflect({'accs'})
-        hareVin = accs.word.title()    
 
 sentence_1 = '- Кто там?' 
 
@@ -1086,9 +913,9 @@ if translate_or_not_translate == 1:
 
     resulting_text_after_processing_sentence_26 = threading.Thread(target = processing_text_sentence_26)
 
-    zvuk_zagruzka.start()
-    zagruzka.start()
-    time.sleep(11)
+    sound_simulated_loading.start()
+    simulated_loading.start()
+    time.sleep(9.5)
     
     os.system('cls')
 
